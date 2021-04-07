@@ -25,7 +25,9 @@ const helmet = require('helmet');
 const csrf = require('csurf'); //sites externos não postam dentro da nossa aplicação
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middlewareTeste');
 
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false
+}));
 
 app.use(express.urlencoded({ extended: true })); //trata body das requisições, para não ficar undefined
 app.use(express.json());
