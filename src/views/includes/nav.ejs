@@ -1,0 +1,12 @@
+<div class="topnav">
+  <a class="agenda active" href="/">Contatos</a>
+  <a class="agenda" href="/novoContato">Novo contato</a>
+
+  <% if(user) { %>
+    <a class="logout" href="/logout" style="float: right;">Logout</a>
+    <% } else { %>
+      <a class="login" href="/login" style="float: right;">Login</a>
+      <% } %>
+
+        <!-- <a class="logout" href="#contact">Logout</a> -->
+</div>

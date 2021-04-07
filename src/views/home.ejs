@@ -1,0 +1,29 @@
+<%- include('includes/head'); %> 
+<%- include('includes/nav'); %>
+<%- include('includes/messages'); %>
+
+  <section>
+    
+    <h1>Contatos</h1>
+    
+    <% if(contatos.length > 0) { %>
+    <p>Os seus contatos estão listados abaixo.</p>
+    <table>
+      <% contatos.forEach(contato => { %>
+        <tr>
+        <td><%= contato.nome %></td>
+        <td><%= contato.telefone %></td>
+        <td><%= contato.email %></td>
+        <td><a href="/editarIndex/<%= contato._id%>">Editar</a></td>
+        <td><a href="/excluir/<%= contato._id%>">Excluir</a></td>
+      </tr>
+      <% }) %>
+    </table>
+    <% } else { %>
+    <p>Cadastre contatos para que eles sejam listados abaixo.</p>
+    <% } %>
+
+  </section>
+
+
+<%- include('includes/footer'); %> 

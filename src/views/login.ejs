@@ -1,0 +1,30 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+<%- include('includes/messages'); %>
+
+        <section class="containerCreate">
+            <h2>Crie sua conta</h2>
+            <form action="/register" method="POST">
+                <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                <label for="email">Insira seu e-mail:</label>
+                <input type="text" name="email">
+                <label for="password">Defina sua senha:</label>
+                <input type="password" name="password">
+                <button class="registerbtn">Criar conta</button>
+            </form>
+        </section>
+        
+        <section class="containerLogin">
+            <h2>Faça login</h2>
+            <form action="/logado" method="POST">
+                <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                <label for="email">E-mail cadastrado:</label>
+                <input type="text" name="email">
+                <label for="password">Insira sua senha:</label>
+                <input type="password" name="password">
+                <button class="registerbtn">Login</button>
+            </form>
+        </section>
+
+
+    <%- include('includes/footer'); %>

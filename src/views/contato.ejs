@@ -1,0 +1,36 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+<%- include('includes/messages'); %>
+
+        <section class="container">
+            <h2>Cadastro de contatos</h2>
+
+            <% if (contato._id) { %>
+                <form action="/editar/<%= contato._id%>" method="POST">
+                    <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                    <label for="nome">Nome:</label>
+                    <input value="<%= contato.nome%>" type="text" name="nome">
+                    <label for="telefone">Telefone:</label>
+                    <input value="<%= contato.telefone%>" type="text" name="telefone">
+                    <label for="email">E-mail:</label>
+                    <input value="<%= contato.email%>" type="text" name="email">
+                    <button class="registerbtn">Salvar edições</button>
+                </form>
+                
+            <% } else { %>
+                <form action="/novo" method="POST">
+                    <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" name="telefone">
+                    <label for="email">E-mail:</label>
+                    <input type="text" name="email">
+                    <button class="registerbtn">Salvar contato</button>
+                </form>
+
+            <% } %>
+
+        </section>
+        
+    <%- include('includes/footer'); %>
