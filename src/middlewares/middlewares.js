@@ -1,7 +1,6 @@
 const path = require('path');
 const pathToBundleJs = path.resolve(__dirname, 'public', 'assets', 'js')
 
-//middleware precisa de NEXT!!!
 exports.middlewareGlobal = (req, res, next) => {
     res.locals.umaVariavelLocal = 'Coruja';
     res.locals.errors = req.flash('errors');

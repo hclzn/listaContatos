@@ -34,7 +34,6 @@ class Login {
     async logar(){
         this.valida();
 
-        console.log(this.errors);
         if(this.errors.length > 0) return;
         
         this.user = await LoginModel.findOne({email:this.body.email});

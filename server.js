@@ -1,4 +1,4 @@
-require('dotenv').config(); //coisas relacionadas com MEU ambiente de desenvolvimento, .git ignora ele
+require('dotenv').config(); 
 const express = require('express');
 const app = express();
 
@@ -13,23 +13,23 @@ mongoose.connect(process.env.CONNECTIONSTRING, {
     })
     .catch(e => console.log(e));
 
-const session = require('express-session'); //identifica navegador do cliente, cookie
-const flash = require('connect-flash'); //flash messages! auto-destrutivas, salvas em sessões!
+const session = require('express-session');
+const flash = require('connect-flash');
 
-const MongoStore = require('connect-mongo'); //sessões salvas em base de dados
+const MongoStore = require('connect-mongo');
 
 const routes = require('./routes');
 const path = require('path');
 
 const helmet = require('helmet');
-const csrf = require('csurf'); //sites externos não postam dentro da nossa aplicação
-const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middlewareTeste');
+const csrf = require('csurf');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middlewares');
 
 app.use(helmet());
 
-app.use(express.urlencoded({ extended: true })); //trata body das requisições, para não ficar undefined
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, 'public'))); //pode acessar diretamente
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({
     secret: 'segredo',
@@ -45,9 +45,10 @@ app.use(sessionOptions);
 app.use(flash());
 
 app.set('views', path.resolve(__dirname, 'src', 'views'));
-app.set('view engine', 'ejs'); //mais se aproxima do html! if, for, print no html consigo fazer com engine
+app.set('view engine', 'ejs');
 
-app.use(csrf()); //2 middlewares: injetar token e check for error
+app.use(csrf());
+
 //Nossos próprios Middlewares <3
 app.use(middlewareGlobal);
 app.use(checkCsrfError);

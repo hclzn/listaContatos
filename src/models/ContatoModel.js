@@ -54,7 +54,7 @@ class Contato {
             nome: this.body.nome,
             telefone: this.body.telefone,
             email: this.body.email,
-            createdBy: 'AJUSTAR'
+            createdBy: 'Ajustado na sequência'
         }
 
     }
